@@ -1,0 +1,151 @@
+.user{
+  
+}
+#anhbia{
+   width: 100%;
+   height: 500px;
+   object-fit: cover;
+}
+#avatar{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    top:35%;
+    left: 50%;
+    border-radius: 80%;
+    transform: translate(-50%,-10%);
+    border:3px solid black;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.fab{
+   margin-left: 8px;
+   font-size: 30px;
+   color: white;
+
+}
+.list-bar ul{
+   position: absolute;
+   top:85%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+}
+.list-bar ul li{
+    display:inline-block;
+    padding-left: 10px; 
+   
+}
+.list-bar ul li a{
+    font-size: 25px;
+    color: white;
+}
+#ntf-block a{
+    font-size: 25px;
+    color: white;
+    display: inline-block;
+}
+#num-ntf{
+    color: rgb(231, 39, 25);
+}
+.ntf-stt{
+    overflow-y: scroll;
+    width: 300px;
+    height: 348px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    overflow-x: hidden;
+    line-height: 20px;
+}
+.arrow_box {
+    display: none;
+    z-index: 2;
+	position:initial;
+	background: #ffffff;
+    border: 1px solid #2e363b;
+    width: 300px;
+    height: 350px;
+    left: 53%;
+    top:12px;
+    box-shadow: 2px 2px 2px 2px black;
+   
+   
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #ffffff;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.arrow_box:before {
+	border-color: rgba(46, 54, 59, 0);
+	border-bottom-color: #2e363b;
+	border-width: 31px;
+	margin-left: -31px;
+}
+#scr-id::-webkit-scrollbar {
+    width: 10px;
+} 
+#scr-id::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); 
+}
+.user .user-img .name{
+    color: white;
+    display: block;
+    position: absolute;
+    left:50%;
+    top:75%;
+    transform: translate(-50%,-50%);
+    
+}
+.baiviet{
+    width: 80%;
+    margin: 0 auto;
+}
+.baiviet #id-bv{
+   border-bottom: 3px solid black;
+   margin-top: 40px;
+}
+.baiviet .stt{
+    display: block;
+    position: relative;
+    height: 250px;
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 3px;
+    
+}
+.baiviet .stt:hover{
+    box-shadow: 4px 4px #666;
+}
+.baiviet .stt img{
+    width: 30%;
+    float:left;
+    height: 100%;
+    object-fit: cover;
+}
+.baiviet .stt .content{
+    width: 70%;
+    float: right;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+.button{
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}

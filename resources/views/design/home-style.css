@@ -1,0 +1,275 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    
+}
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    font-size:20px;
+    text-rendering: optimizeLegibility; 
+}
+a{
+    text-decoration: none;
+}
+
+
+
+/* CSS for header */
+
+.header{
+    background-image:url(YK-orecchiette-with-nduja-threeByTwoMediumAt2X-v2.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+.main-nav ul{
+   float: right;
+   list-style: none;
+   
+}
+.main-nav li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.main-nav li a{
+    
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    transition: border-bottom 0.2s;
+}
+.main-nav li a:hover,
+.main-nav li a:active{
+    border-bottom: 2px solid #51bc64;
+}
+.monan{
+    background-color: #51bc64;
+    position: absolute;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 10px;
+    padding-top:30px;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    top:100px;
+    left:50px;
+    z-index: 2;
+}
+.logo{
+    color: black;
+    font-size: 20px;
+}
+.label-detail{
+    display: table-cell;
+    margin: 0 auto;
+    max-width: 345px;
+    padding: 52px 30px 30px;
+    vertical-align: middle;
+    background-color: #fff;
+    position: relative;
+    top:120px;
+    left: 90px;
+    z-index: 1;
+}
+.top-label{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.can-le{
+   width: 80%;
+   height: 80%;
+   margin: auto;
+   
+}
+
+/* CSS for login form*/
+.login-form{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    transition: dipslay 5s;
+}
+.login{
+    width: 30%;
+    background-color: #fff;
+    border-radius: 3px;
+    margin: 5% auto 15% auto;
+    padding: 20px;
+}
+.animate{
+    -webkit-animation: animatezoom 0.6s;
+     animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+
+
+/* CSS for class cook-this-week */
+.cook-this-week{
+    border-bottom:3px solid black;
+}
+.cook-this-week .content{
+    padding: 50px 0;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.cook-this-week .content h3 a{
+    top:50px;
+    color: black;
+    font-size: 50px;
+  
+}
+/* CSS for class list-cook-week */
+.list-cook-week{
+    margin-top: 20px;
+}
+
+.col-md-3 .noi-dung{
+  margin: 15px 2.5px 15px 2.5px;
+  border:1px solid #666; 
+  box-shadow: 1px 1px 1px 1px #666;
+}
+.col-md-3 .noi-dung img{
+    width:100%;
+}
+.col-md-3 .noi-dung p b {
+    font-size: 15px;
+    color: black;
+   
+}
+.col-md-3 .noi-dung small{
+    color: black;
+}
+.col-md-3 .noi-dung .content-cook{
+    padding: 10px 10px 10px 10px;
+}
+.col-md-3 .noi-dung .content-cook i{
+    float: right;
+    margin-bottom: 0;
+}
+.col-md-3 .noi-dung .content-cook i:hover{
+    color:red;
+}
+.col-md-3:hover .noi-dung{
+    box-shadow: 5px 5px 5px 5px #666;
+    cursor: pointer;
+    text-decoration: none;
+}
+/* CSS for class phan-trang */
+.phan-trang{
+    float: right;
+}
+.phan-trang ul li {
+    list-style: none;
+    display: inline-block;
+   
+}
+.phan-trang ul li a{
+    text-align: center;
+}
+/* CSS for class SaveRecap */
+.saveRecap{
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 55px;
+    padding: 40px 33px;
+    text-align: center;
+}
+.saveRecap .saveRecap-Icon{
+    background-image: url(save-recap.svg);
+    display: block;
+    height: 85px;
+    margin: 0 auto 10px;
+    width: 193px;
+}
+.saveRecap .zero-header{
+    font-family: nyt-cheltenham,Georgia,Times New Roman,serif;
+    font-size: 1.5rem;
+    font-weight: 50;
+    letter-spacing: .4px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+/* CSS for class list-new */
+.list-new{
+    border-top: 3px solid black;
+}
+.list-new h3{
+    margin-top: 30px;
+}
+
+/* CSS for class recomment */
+.recomment{
+    border-top:3px solid black;
+    border-bottom: 3px solid black;
+    padding-bottom: 30px;
+   
+}
+.recomment h3{
+    margin-top: 30px;
+}
+.col .border{
+    margin-top:20px;
+    border: 1px solid #e6e6e6;
+}
+.col .border:hover{
+    box-shadow: 3px 3px 3px 3px black;
+    cursor: pointer;
+}
+
+.col img{
+    width: 100%;
+} 
+.col .border .noidung {
+    padding: 0px 10px 0px 10px; 
+   
+}
+.col .border .noidung h3{
+    color: black;
+}
+.col .border .noidung .save {
+   height: 50px;
+   width: 200px;
+   padding-top:9px; 
+   border-radius: 5px;
+   text-align: center;
+   margin-left: 150px;
+   margin-bottom: 10px;
+   background: #e5988e;
+   
+}
+.col .border .noidung .save span{
+    color: black;
+}
+.col .border .noidung .save:hover{
+    background-color:#dd5e4d;
+}
+/* CSS for footer*/
+.footer{
+    width: 100%;
+    height: 300px;
+    background: black;
+    margin-top: 50px;
+}

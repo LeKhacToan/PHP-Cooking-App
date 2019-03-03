@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:before, :after {
+    display: block;
+    position: absolute;
+  }
+html, body {
+	min-height: 100%;
+}
+body {
+	color: #777;
+	position: relative;
+    background: #f5f5f5;
+	font: 15px Lato, sans-serif;
+}
+
+.control{
+    width: 250px;
+	background: #3B4854;
+	height: 100%;
+	position: absolute;
+	z-index: 9;
+	transition: all .4s ease-in-out;
+}
+.use{
+    
+}
