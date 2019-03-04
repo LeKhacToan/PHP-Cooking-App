@@ -71,7 +71,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('them', 'BaiVietController@getThem');
         Route::post('them', 'BaiVietController@postThem');
 
-        Route::get('xoa/{id}', 'UserController@xoa');
+        Route::get('xoa/{id}', 'BaiVietController@xoa');
     });
     Route::group(['prefix' => 'nguyenlieuchinh'], function () {
         Route::get('danhsach', 'NguyenLieuChinhController@getDanhSach');

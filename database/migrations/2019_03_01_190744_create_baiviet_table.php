@@ -17,9 +17,10 @@ class CreateBaivietTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('link_image');
-            $table->string('describe');
+            $table->longText('describe');
             $table->string('time');
             $table->string('serving');
+
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
@@ -40,6 +41,7 @@ class CreateBaivietTable extends Migration
 
             $table->unsignedInteger('phuongphap_id');
             $table->foreign('phuongphap_id')->references('id')->on('phuongphap');
+
             $table->boolean('top_day')->default(false);
             $table->boolean('top_week')->default(false);
             $table->timestamps();

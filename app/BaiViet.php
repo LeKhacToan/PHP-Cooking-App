@@ -10,10 +10,10 @@ class BaiViet extends Model
     protected $table ="baiviet";
 
     public function nguyenlieus(){
-        return $this->hasMany('App\NguyenLieu');
+        return $this->hasMany('App\NguyenLieu','baiviet_id');
     }
     public function buocthuchiens(){
-        return $this->hasMany('App\BuocThucHien');
+        return $this->hasMany('App\BuocThucHien','baiviet_id');
     }
     public function user(){
         return $this->belongsTo('App\User');
@@ -35,5 +35,8 @@ class BaiViet extends Model
     }
     public function thucdon(){
         return $this->hasOne('App\ThucDon');
+    }
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
     }
 }

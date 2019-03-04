@@ -15,7 +15,7 @@ class CreateBuocthuchienTable extends Migration
     {
         Schema::create('buocthuchien', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('describe');
+            $table->longText('describe');
             $table->string('link_image')->nullable();
             $table->unsignedInteger('baiviet_id');
             $table->foreign('baiviet_id')->references('id')->on('baiviet');
