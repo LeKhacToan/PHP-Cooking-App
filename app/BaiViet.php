@@ -16,27 +16,27 @@ class BaiViet extends Model
         return $this->hasMany('App\BuocThucHien','baiviet_id');
     }
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id');
     }
     public function amthuc(){
-        return $this->hasOne('App\AmThuc');
+        return $this->belongsTo('App\AmThuc','amthuc_id','id');
     }
     public function dokho(){
-        return $this->hasOne('App\DoKho');
+        return $this->belongsTo('App\DoKho');
     }
     public function loaimon(){
-        return $this->hasOne('App\LoaiMon');
+        return $this->belongsTo('App\LoaiMon');
     }
     public function nguyenlieuchinh(){
-        return $this->hasOne('App\NguyenLieuChinh');
+        return $this->belongsTo('App\NguyenLieuChinh');
     }
     public function phuongphap(){
-        return $this->hasOne('App\PhuongPhap');
+        return $this->belongsTo('App\PhuongPhap');
     }
     public function thucdon(){
-        return $this->hasOne('App\ThucDon');
+        return $this->belongsTo('App\ThucDon','thucdon_id');
     }
     public function tags(){
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag','baiviet_tag','baiviet_id','tag_id');
     }
 }

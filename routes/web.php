@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 Route::post('login','LoginController@login');
 Route::get('logout','LoginController@logout');
-
+Route::get('baiviet/{id}','BaiVietController@getChiTiet');
+Route::get('trangcanhan/{id}','UserController@getChiTiet');
 
 Route::get('thu',function(){
     if(DB::connection()->getDatabaseName())

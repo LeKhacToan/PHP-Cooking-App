@@ -24,7 +24,7 @@
                         <a href="admin/baiviet/danhsach">Danh sách bài viết</a>
                     </li>
                     <li class="">
-                        <a href="admin/baiviet/them">Thêm nguyên liệu</a>
+                        <a href="admin/baiviet/them">Thêm bài viết</a>
                     </li>
                 </ul>
             </li>

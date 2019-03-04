@@ -31,13 +31,17 @@
               </li>
               <li class="nav-item active">
                     <a class="nav-link" href="#"> {{ Auth::user()->name }}<span class="sr-only">(current)</span></a>
-                  </li>
+              </li>
+              @if (Auth::user()->role==1)
+              <li class="nav-item active">
+                <a class="nav-link" href="admin/baiviet/them">Admin<span class="sr-only">(current)</span></a>
+               </li>
+              @endif
             @else
                <li class="nav-item">
                     <a class="nav-link" onclick="document.getElementById('id-login').style.display='block'" style="width:auto;">Đăng nhập</a>
                   </li>
             @endif
-
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -45,7 +49,6 @@
           </form>
         </div>
       </nav>
-
      <!--Form login-->
     @include('layout.login')
 

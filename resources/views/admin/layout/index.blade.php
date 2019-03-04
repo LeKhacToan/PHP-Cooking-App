@@ -78,24 +78,24 @@
             </div>
             <div class="row mt-md-4">
                 <div class="col-sm-6 skin-item">
-                    <a href="#" class="skin-radio" data-skin="arryn" data-logo="white" title="Skin - Arryn">
+                    <a  class="skin-radio" data-skin="arryn" data-logo="white" title="Skin - Arryn">
                         <img src="assets/global/img/skins/skin-arryn.png" class="img-fluid">
                     </a>
                 </div>
                 <div class="col-sm-6 skin-item">
-                    <a href="#" class="skin-radio" data-skin="lannister" data-logo="white" title="Skin - Lannister">
+                    <a  class="skin-radio" data-skin="lannister" data-logo="white" title="Skin - Lannister">
                         <img src="assets/global/img/skins/skin-lannister.png" class="img-fluid">
                     </a>
                 </div>
             </div>
             <div class="row mt-md-4">
                 <div class="col-sm-6 skin-item">
-                    <a href="#" class="skin-radio" data-skin="stark" title="Skin - Stark">
+                    <a  class="skin-radio" data-skin="stark" title="Skin - Stark">
                         <img src="assets/global/img/skins/skin-stark.png" class="img-fluid">
                     </a>
                 </div>
                 <div class="col-sm-6 skin-item">
-                    <a href="#" class="skin-radio" data-skin="targaryen" title="Skin - Targaryen">
+                    <a  class="skin-radio" data-skin="targaryen" title="Skin - Targaryen">
                         <img src="assets/global/img/skins/skin-targaryen.png" class="img-fluid">
                     </a>
                 </div>

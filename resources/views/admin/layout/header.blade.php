@@ -31,8 +31,11 @@
             </div>
         </li>
         <li>
-            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img
-                    src="assets/global/img/avatars/avatar.png" alt="Avatar"></a>
+            @if(Auth::user()->avatar!="")
+            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img width="20px" src="upload/avatar/{{Auth::user()->avatar}}"alt="Avatar"></a>
+            @else
+            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img width="20px" src="upload/anhbia.png"alt="Avatar"></a>
+            @endif
             <div class="dropdown-menu dropdown-menu-right notification-dropdown">
                 <a class="dropdown-item" href="../settings.html"><i class="icon-fa icon-fa-cogs"></i> Settings</a>
                 <a class="dropdown-item" href="../../login.html"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>
