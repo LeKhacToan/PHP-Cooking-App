@@ -216,8 +216,8 @@ a{
 .list-new{
     border-top: 3px solid black;
 }
-.list-new h3{
-    margin-top: 30px;
+.list-new h5{
+    padding-top: 30px;
 }
 
 /* CSS for class recomment */

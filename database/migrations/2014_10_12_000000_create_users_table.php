@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('nick_name')->nullable();
-            $table->string('decription')->nullable();
-            $table->string('email')->unique();
+            $table->longText('decription')->nullable();
+            $table->string('email',100)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('role')->default(0);
             $table->date('ngay_sinh')->nullable();

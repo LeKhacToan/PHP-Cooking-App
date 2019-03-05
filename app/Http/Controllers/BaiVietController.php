@@ -166,7 +166,7 @@ class BaiVietController extends Controller
             while(file_exists("upload/image_baiviet".$hinh)){
               $hinh=str_random(4)."_".$name;
             }
-           // unlink("upload/image_baiviet/".$baiviet->link_image);
+            unlink("upload/image_baiviet/".$baiviet->link_image);
             $file->move("upload/image_baiviet",$hinh);
             $baiviet->link_image=$hinh;
           }
@@ -216,7 +216,7 @@ class BaiVietController extends Controller
     }
     //tags
     $baiviet->tags()->detach();
-    
+
     if(!empty($request->tags)){
         $tags=$request->tags;
         $thes = explode(",", $tags);
@@ -245,7 +245,7 @@ class BaiVietController extends Controller
     public function xoa(){
 
     }
-    public function chitiet(){
-
+    public function getChiTiet(){
+          return view('pages/baiviet');
     }
 }

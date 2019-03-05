@@ -28,7 +28,7 @@
                  @endif
                     <table id="responsive-datatable" class="table table-striped table-bordered table-hover" style="width:100%" cellspacing="0">
                         <thead>
-                        <tr align="center">
+                        <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Hình ảnh</th>
@@ -74,13 +74,13 @@
                                 <th>{{$bv->name}}</th>
                                 <th><p><img src="upload/image_baiviet/{{$bv->link_image}}" width="100px"/></p></th>
                                 <th>{{ str_limit($bv->describe, $limit = 30, $end = '...') }}</th>
-                                <th>{{$bv->time}}</th>
-                                <th>{{$bv->serving}}</th>
+                                <th>{{$bv->time}} phút</th>
+                                <th>{{$bv->serving}} người</th>
                                 <th>{{$bv->user->name}}</th>
                                 <th>{{$bv->thucdon->name}}</th>
                                 <th>{{$bv->loaimon->name}}</th>
                                 <th>{{$bv->nguyenlieuchinh->name}}</th>
-                                <th></th>
+                                <th>{{$bv->dokho->name}}</th>
                                 <th>{{$bv->amthuc->name}}</th>
                                 <th>{{$bv->phuongphap->name}}</th>
                                 <th> <input type="checkbox" class="ls-switch" name="top_day" @if($bv->top_day) checked="true" @endif/></th>
@@ -92,7 +92,6 @@
                                   <a href="admin/baiviet/xoa/{{$bv->id}}" class="btn btn-default btn-sm"
                                    data-token="ju0AJjtVlV2LnL9lhkK9fOpg7DhuaMFVgR1mifUv" data-delete
                                    data-confirmation="notie"> <i class="icon-fa icon-fa-trash"></i> Delete</a></td>
-                            </tr>
                             </tr>
                              @endforeach
                         </tbody>

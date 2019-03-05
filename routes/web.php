@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 Route::post('login','LoginController@login');
 Route::get('logout','LoginController@logout');
-Route::get('baiviet/{id}','BaiVietController@getChiTiet');
-Route::get('trangcanhan/{id}','UserController@getChiTiet');
+Route::get('baiviet','BaiVietController@getChiTiet');
+Route::get('trangcanhan/','UserController@getChiTiet');
 
 Route::get('thu',function(){
     if(DB::connection()->getDatabaseName())
@@ -27,7 +27,7 @@ Route::get('thu',function(){
    echo "Yes! successfully connected to the DB: " . DB::connection()->getDatabaseName();
 }
 });
-
+//,'middleware'=>'adminLogin'
 Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('danhsach', 'UserController@getDanhSach');

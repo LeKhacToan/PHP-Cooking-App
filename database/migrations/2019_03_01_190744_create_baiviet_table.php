@@ -18,8 +18,8 @@ class CreateBaivietTable extends Migration
             $table->string('name');
             $table->string('link_image');
             $table->longText('describe');
-            $table->string('time');
-            $table->string('serving');
+            $table->integer('time');
+            $table->integer('serving');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
