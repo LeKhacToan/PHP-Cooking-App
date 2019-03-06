@@ -1,14 +1,30 @@
 @extends('layout.index')
 @section('css')
+<link href="assets/global/css/laraspace.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/trangcanhan.css">
 @stop
 @section('scripts')
+<script src="assets/global/js/core/pace.js"></script>
+<script src="assets/global/js/core/plugins.js"></script>
+<script src="assets/global/js/demo/skintools.js"></script>
+<script src="assets/plugins/jquery-validate/jquery.validate.js"></script>
+<script src="assets/pages/advanced.js"></script>
+<script src="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="assets/plugins/select2/select2.js"></script>
+<script src="assets/plugins/form-wizard/jquery.steps.js"></script>
+<script src="assets/pages/wizard.js"></script>
 <script>
     var i=false;
          function clicktb(){
              i=!i;
              document.getElementById("tb_id").style.display=i ?'block':'none';
          }
+     var postForm = document.getElementById("add-post");
+        window.onclick = function () {
+            if (event.target == postForm) {
+                postForm.style.display = "none";
+            }
+        }
 </script>
 @stop
 @section('content')
@@ -17,7 +33,7 @@
            @include('pages.person-header')
         </div>
         <div class="noidung-cn">
-            <button class="btn btn-primary">Thêm bài viết</button>
+            <button class="btn btn-primary" onclick="document.getElementById('add-post').style.display='block'">Thêm bài viết</button>
         </div>
         <div class="list">
             <div class="row justify-content-md-center">
@@ -133,5 +149,9 @@
                     </div>
             </div>
         </div>
-    </div>
+       
+</div>
+
+
+    @include('pages.add-new-post')
 @endsection

@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('scripts')
-
+    <script src="js/addNewPost.js"></script>
 @endsection
 @section('content')
 <div class="main-content">
@@ -39,7 +39,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label"><b>Tên món ăn mới*</b></label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Ten mon moi" name="cc" id="ten" value="{{$baiviet->name}}">
+                        <input type="text" class="form-control" placeholder="Ten mon moi" name="cc" id="ten" value="{{$baiviet->name}}" required>
                     </div>
                 </div>
                 <div class="form-group  row">
@@ -64,7 +64,7 @@
                 <div class="form-group row">
                     <label class="col form-control-label"><b>Thời gian thực hiện*</b></label>
                     <div class="col">
-                    <input type="number" class="form-control" name="phut" placeholder="Số phút" min="0" value="{{$baiviet->time}}">
+                    <input type="number" class="form-control" name="phut" placeholder="Số phút" min="0" value="{{$baiviet->time}}" required>
                     </div>
                     <div class="col">
                         <label class="form-control-label">Phút</label>
@@ -74,7 +74,7 @@
                     <label class="col form-control-label"><b>Số người ăn*</b></label>
                     <div class="col">
                         <input type="number" class="form-control" name="songuoian"
-                    placeholder="Số người ăn" min="0" value="{{$baiviet->serving}}">
+                    placeholder="Số người ăn" min="0" value="{{$baiviet->serving}}" required>
                     </div>
                     <div class="col">
                             <label class="form-control-label">Người</label>
@@ -83,7 +83,7 @@
                 <div class="form-group row">
                         <label for="exampleTextarea" class="col-sm-2 form-control-label"><b>Mô tả về món ăn*</b></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="exampleTextarea" rows="4" name="describe" >{{$baiviet->describe}}</textarea>
+                            <textarea class="form-control" id="exampleTextarea" rows="4" name="describe" required >{{$baiviet->describe}}</textarea>
                         </div>
 
                 </div>
@@ -95,17 +95,16 @@
                                     @foreach ( $baiviet->nguyenlieus as  $nl )
                                   <tr id="row{{$baiviet->id}}10{{$nl->id}}">
                                         <td><input type="text" name="names[]" id="name" class="form-control"
-                                          placeholder="Tên nguyên liệu" value="{{$nl->name}}"></td>
+                                          placeholder="Tên nguyên liệu" value="{{$nl->name}}" required></td>
                                         <td><input type="text" class="form-control" name="numbers[]" id="number"
-                                        placeholder="Số lượng" value="{{$nl->soluong}}"></td>
+                                        placeholder="Số lượng" value="{{$nl->soluong}}" required></td>
                                         <td><i class="icon-fa icon-fa-close remove_nl" id="{{$baiviet->id}}10{{$nl->id}}"></i></td>
                                         </tr>
                                     @endforeach
 
                              </table>
                          </div>
-                         <i class="icon-fa icon-fa-plus-circle" id="add" style="cursor:pointer"><b>  Thêm nguyên liệu </b></i>
-                         <br>
+                         <a class="btn btn-primary" id="add">Thêm nguyên liệu</a>
                 </div>
                 <div class="form-group">
                     <label><b>Bước thực hiện*</b></label>
@@ -115,7 +114,7 @@
                          <table class="table table-bordered" id="dynamic_field_step">
                              @foreach ( $baiviet->buocthuchiens as $bth )
                          <tr id="row_step{{$bth->id}}{{$baiviet->id}}">
-                             <td> <textarea class="form-control" name="motas[]" id="mota" rows="3" >{{$bth->describe}}</textarea></td>
+                             <td> <textarea class="form-control" name="motas[]" id="mota" rows="3" required >{{$bth->describe}}</textarea></td>
                              <td><input type="text" hidden value="{{$bth->link_image}}" name="link_image[]" id="link_image">
                                  <input type="file" class="form-control-file" id="hinh_step" name="hinh_steps[]"></td>
                              <td><img src="upload/image_step/{{$bth->link_image}}" width="50px" ></td>
@@ -124,8 +123,7 @@
                              @endforeach
                          </table>
                 </div>
-                     <i class="icon-fa icon-fa-plus-circle" id="add_step_new" style="cursor:pointer"><b>  Thêm bước thực hiện </b></i>
-                     <br>
+                <a class="btn btn-primary" id="add_step_new">Thêm bước thực hiện</a>
             </div>
             <div class="form-group">
                 <div class="row">
@@ -215,24 +213,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    var i=1;
-    var j=1;
-     $(document).on('click','#add',function(){
-        i++;
-        $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="names[]" id="names" class="form-control"placeholder="Tên nguyên liệu"></td><td><input type="text"  name="numbers[]" id="numbers" class="form-control"placeholder="Số lượng"></td><td> <i class="icon-fa icon-fa-close remove_nl" id="'+i+'"></i></td></tr>');
-     });
-     $(document).on('click','.remove_nl',function(){
-         var button_id=$(this).attr("id");
-         $("#row"+button_id+"").remove();
-     });
-     $(document).on('click','#add_step_new',function(){
-        j++;
-        $('#dynamic_field_step').append('<tr id="row_step'+j+'"><td><textarea class="form-control" name="motas[]" id="motas" rows="3" name="decription"></textarea></td><td><input type="text" hidden  name="link_image[]" id="link_image"><input type="file" class="form-control-file" id="hinh_steps" name="hinh_steps[]"></td><td><i class="icon-fa icon-fa-close remove_step" id="'+j+'"></i></td></tr>');
-     });
-     $(document).on('click','.remove_step',function(){
-         var step_id=$(this).attr("id");
-         $("#row_step"+step_id+"").remove();
-     });
-  </script>
+
 @endsection
