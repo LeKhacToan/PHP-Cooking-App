@@ -20,6 +20,7 @@ Route::post('login','LoginController@login');
 Route::get('logout','LoginController@logout');
 Route::get('baiviet','BaiVietController@getChiTiet');
 Route::get('trangcanhan/{id}','UserController@getChiTiet');
+Route::post('baiviet/them', 'BaiVietController@new');
 
 Route::get('thu',function(){
     if(DB::connection()->getDatabaseName())

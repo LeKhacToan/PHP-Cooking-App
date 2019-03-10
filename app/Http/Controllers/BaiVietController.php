@@ -248,4 +248,92 @@ class BaiVietController extends Controller
     public function getChiTiet($id){
           return view('pages/baiviet');
     }
+    public function new(ShareBaiVietRequest $request){
+
+        $baiviet= new BaiViet();
+        $baiviet->name=$request->cc;
+        if($request->hasFile('hinh')){
+            $file=$request->file('hinh');
+            $name=$file->getClientOriginalName();
+            $hinh=str_random(4)."_".$name;
+            while(file_exists("upload/image_baiviet".$hinh)){
+              $hinh=str_random(4)."_".$name;
+            }
+            $file->move("upload/image_baiviet",$hinh);
+            $baiviet->link_image=$hinh;
+        }
+        $baiviet->describe=$request->describe;
+        $time=$request->phut;
+        $baiviet->time=$time;
+        $seving=$request->songuoian;
+        $baiviet->serving=$seving;
+        $baiviet->user_id=Auth::user()->id;
+        $baiviet->thucdon_id=$request->ThucDon;
+        $baiviet->loaimon_id=$request->LoaiMon;
+        $baiviet->nguyenlieuchinh_id=$request->NguyenLieuChinh;
+        $baiviet->dokho_id=$request->DoKho;
+        $baiviet->amthuc_id=$request->AmThuc;
+        $baiviet->phuongphap_id=$request->PhuongPhap;
+
+        if (isset($request->top_day)) {
+            $baiviet->top_day = true;
+        }
+        if (isset($request->top_week)) {
+            $baiviet->top_week = true;
+        }
+        $baiviet->save();
+
+       $tennguyenlieu = Input::get('names');
+       $soluongnl=Input::get('numbers');
+
+       for($i=0; $i<count($tennguyenlieu);$i++)
+        {
+           $nl=new NguyenLieu();
+           $nl->name=$tennguyenlieu[$i];
+           $nl->soluong=$soluongnl[$i];
+           $baiviet->nguyenlieus()->save($nl);
+        }
+
+        $motas=Input::get('motas');
+        $hinhs=$request->file('hinh_steps');
+
+
+        for($i=0; $i<count($motas);$i++)
+        {
+            $file=$hinhs[$i];
+            $name=$file->getClientOriginalName();
+            $hinh=str_random(4)."_".$name;
+            while(file_exists("upload/image_step".$hinh)){
+               $hinh=str_random(4)."_".$name;
+            }
+            $file->move("upload/image_step",$hinh);
+            $step= new BuocThucHien();
+            $step->describe=$motas[$i];
+            $step->link_image=$hinh;
+            $baiviet->buocthuchiens()->save($step);
+        }
+        //tags
+        if(!empty($request->tags)){
+           $tags=$request->tags;
+           $thes = explode(",", $tags);
+           foreach($thes as $the){
+               $numberTag= Tag::where('name',$the)->first();
+               if($numberTag==null){
+                  $newTag=new Tag();
+                  $newTag->name=$the;
+                  $newTag->save();
+                  $baiviettag=new BaiVietTag();
+                  $baiviettag->baiviet_id=$baiviet->id;
+                  $baiviettag->tag_id=$newTag->id;
+                  $baiviettag->save();
+               }else{
+                $baiviettag=new BaiVietTag();
+                $baiviettag->baiviet_id=$baiviet->id;
+                $baiviettag->tag_id=$numberTag->id;
+                $baiviettag->save();
+               }
+           }
+        }
+        return redirect(Request::url())->with('thongbao','Operation Successful !');
+    }
 }

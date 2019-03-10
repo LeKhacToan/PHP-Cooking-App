@@ -26,7 +26,7 @@ class ShareBaiVietRequest extends FormRequest
         return [
             'cc' => 'required|min:6|max:255',
             'hinh'=>'required|mimes:jpeg,jpg,png,gif',
-            'describe'=>'required|min:20',
+            'describe'=>'required|min:10',
             'phut'=>'numeric|required',
             'songuoian'=>'required|numeric|min:1',
             'names.*'=>'required',

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 @stop
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
     var a=false;
          function clicktb(){
@@ -84,10 +84,12 @@
                                     <p><b>{{$item->name}}</b></p>
                                     <small> by {{$item->user->name}}</small><br>
                                     <small>{{$item->time}} phút</small>
+
                                     <div class="save">
                                         <span><i class="far fa-bookmark"></i></span>
-                                        <span>Lưu công thức</span>
+
                                     </div>
+                                    <br>
                                 </div>
                             </div>
                         </a>
@@ -110,8 +112,9 @@
                                <small>{{$item->time}} phút</small>
                                <div class="save">
                                     <span><i class="far fa-bookmark"></i></span>
-                                    <span>Lưu công thức</span>
+                                    <span></span>
                                 </div>
+                                <br>
                            </div>
                        </div>
                    </a>
