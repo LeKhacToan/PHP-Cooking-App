@@ -24,6 +24,23 @@
         <div class="wrapper-cn">
            @include('pages.person-header')
         </div>
+        @if(count($errors) > 0)
+        <div class="alert alert-danger">
+           @foreach ($errors->all() as $err)
+             {{$err}}<br>
+           @endforeach
+        </div>
+        @endif
+        @if (session('thongbao'))
+            <div class="alert alert-success">
+                {{session('thongbao')}}
+            </div>
+        @endif
+        @if(session('loi'))
+        <div class="alert alert-success">
+                {{session('loi')}}
+            </div>
+        @endif
         @if(Auth::check())
            @if(Auth::user()->id==$user->id)
            <div class="noidung-cn">
@@ -87,7 +104,6 @@
 
                                     <div class="save">
                                         <span><i class="far fa-bookmark"></i></span>
-
                                     </div>
                                     <br>
                                 </div>
@@ -112,7 +128,6 @@
                                <small>{{$item->time}} phút</small>
                                <div class="save">
                                     <span><i class="far fa-bookmark"></i></span>
-                                    <span></span>
                                 </div>
                                 <br>
                            </div>

@@ -3,23 +3,6 @@
         <div class="card-header">
             <h4>Thêm bài viết mới</h4>
         </div>
-        @if(count($errors) > 0)
-        <div class="alert alert-danger">
-           @foreach ($errors->all() as $err)
-             {{$err}}<br>
-           @endforeach
-        </div>
-        @endif
-        @if (session('thongbao'))
-            <div class="alert alert-success">
-                {{session('thongbao')}}
-            </div>
-        @endif
-        @if(session('loi'))
-        <div class="alert alert-success">
-                {{session('loi')}}
-            </div>
-        @endif
         <form id="sendForm" method="POST"  enctype="multipart/form-data" action="baiviet/them">
             @csrf
             <div class="form-group row">
@@ -174,6 +157,5 @@
             var step_id=j;
             $("#row_step"+step_id+"").remove();
         }
-
     </script>
 </div>
