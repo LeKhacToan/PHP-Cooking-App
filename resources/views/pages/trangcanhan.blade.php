@@ -1,23 +1,15 @@
 @extends('layout.index')
 @section('css')
-<link href="assets/global/css/laraspace.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/trangcanhan.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/trangcanhan.css')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 @stop
 @section('scripts')
-<script src="assets/global/js/core/pace.js"></script>
-<script src="assets/global/js/core/plugins.js"></script>
-<script src="assets/global/js/demo/skintools.js"></script>
-<script src="assets/plugins/jquery-validate/jquery.validate.js"></script>
-<script src="assets/pages/advanced.js"></script>
-<script src="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-<script src="assets/plugins/select2/select2.js"></script>
-<script src="assets/plugins/form-wizard/jquery.steps.js"></script>
-<script src="assets/pages/wizard.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    var i=false;
+    var a=false;
          function clicktb(){
-             i=!i;
-             document.getElementById("tb_id").style.display=i ?'block':'none';
+             a=!a;
+             document.getElementById("tb_id").style.display=a ?'block':'none';
          }
      var postForm = document.getElementById("add-post");
         window.onclick = function () {
@@ -32,126 +24,107 @@
         <div class="wrapper-cn">
            @include('pages.person-header')
         </div>
+        @if(Auth::check())
+           @if(Auth::user()->id==$user->id)
+           <div class="noidung-cn">
+                <button class="btn btn-primary" onclick="document.getElementById('add-post').style.display='block'">Thêm bài viết</button>
+            </div>
+            @else
+            <div class="noidung-cn">
+            </div>
+           @endif
+        @else
         <div class="noidung-cn">
-            <button class="btn btn-primary" onclick="document.getElementById('add-post').style.display='block'">Thêm bài viết</button>
         </div>
+        @endif
         <div class="list">
             <div class="row justify-content-md-center">
-                <div class="col-md-3">
-                    <a href="#" style="text-decoration: none;">
-                        <div class="noi-dung">
-                            <img src="image/merlin_148844376_aa37e5b5-71b6-4875-8384-80b50c9ee861-articleLarge.jpg" alt="">
-                            <div class="content-cook">
-                                <p><b>Peruvian Roasted Chicken With Spicy Cilantro Sauce</b></p>
-                                <small>By Melissa Clark</small><br>
-                                <small>50 minutes</small>
-                                <div class="dropdown show">
-                                    <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
+                {{-- kiem tra dang nhap --}}
+            @if(Auth::check())
+                @if(Auth::user()->id==$user->id)
+                  @if($user->baiviets->count()==0)
+                  <p>Không có bài viết</p>
+                  @else
+                  @foreach ($user->baiviets as $item)
+                 <div class="col-md-3">
+                         <a href="baiviet/{{$item->id}}" style="text-decoration: none;">
+                             <div class="noi-dung">
+                                 <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
+                                 <div class="content-cook">
+                                     <p><b>{{$item->name}}</b></p>
+                                     <small> by {{$item->user->name}}</small><br>
+                                     <small>{{$item->time}} phút</small>
+                                     <div class="dropdown show">
+                                         <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                             aria-haspopup="true" aria-expanded="false">
+                                         </a>
+                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                             <a class="dropdown-item" href="sua/baiviet/{{$item->id}}">Edit</a>
+                                             <a class="dropdown-item" href="xoa/baiviet/{{$item->id}}">Delete</a>
+                                         </div>
+                                     </div>
 
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                                 </div>
+                             </div>
+                         </a>
+                     </div>
+                  @endforeach
+                 @endif
+                 {{-- khong la nguoi dung --}}
+                 @else
+                 @if($user->baiviets->count()==0)
+                 <p>Không có bài viết</p>
+                 @else
+                 @foreach ($user->baiviets as $item)
                 <div class="col-md-3">
-                    <a href="#" style="text-decoration: none;">
-                        <div class="noi-dung">
-                            <img src="image/merlin_148844376_aa37e5b5-71b6-4875-8384-80b50c9ee861-articleLarge.jpg" alt="">
-                            <div class="content-cook">
-                                <p><b>Peruvian Roasted Chicken With Spicy Cilantro Sauce</b></p>
-                                <small>By Melissa Clark</small><br>
-                                <small>50 minutes</small>
-                                <div class="dropdown show">
-                                    <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" style="text-decoration: none;">
-                        <div class="noi-dung">
-                            <img src="image/merlin_148844376_aa37e5b5-71b6-4875-8384-80b50c9ee861-articleLarge.jpg" alt="">
-                            <div class="content-cook">
-                                <p><b>Peruvian Roasted Chicken With Spicy Cilantro Sauce</b></p>
-                                <small>By Melissa Clark</small><br>
-                                <small>50 minutes</small>
-                                <div class="dropdown show">
-                                    <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" style="text-decoration: none;">
-                        <div class="noi-dung">
-                            <img src="image/merlin_148844376_aa37e5b5-71b6-4875-8384-80b50c9ee861-articleLarge.jpg" alt="">
-                            <div class="content-cook">
-                                <p><b>Peruvian Roasted Chicken With Spicy Cilantro Sauce</b></p>
-                                <small>By Melissa Clark</small><br>
-                                <small>50 minutes</small>
-                                <div class="dropdown show">
-                                    <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                        <a href="#" style="text-decoration: none;">
+                        <a href="baiviet/{{$item->id}}" style="text-decoration: none;">
                             <div class="noi-dung">
-                                <img src="image/merlin_148844376_aa37e5b5-71b6-4875-8384-80b50c9ee861-articleLarge.jpg" alt="">
+                                <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
                                 <div class="content-cook">
-                                    <p><b>Peruvian Roasted Chicken With Spicy Cilantro Sauce</b></p>
-                                    <small>By Melissa Clark</small><br>
-                                    <small>50 minutes</small>
-                                    <div class="dropdown show">
-                                        <a class="dropdown-toggle"  role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="/toan/deptrai">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
+                                    <p><b>{{$item->name}}</b></p>
+                                    <small> by {{$item->user->name}}</small><br>
+                                    <small>{{$item->time}} phút</small>
+                                    <div class="save">
+                                        <span><i class="far fa-bookmark"></i></span>
+                                        <span>Lưu công thức</span>
                                     </div>
-
                                 </div>
                             </div>
                         </a>
                     </div>
+                 @endforeach
+                @endif
+                 @endif
+            @else
+            @if($user->baiviets->count()==0)
+            <p>Không có bài viết</p>
+            @else
+            @foreach ($user->baiviets as $item)
+           <div class="col-md-3">
+                   <a href="baiviet/{{$item->id}}" style="text-decoration: none;">
+                       <div class="noi-dung">
+                           <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
+                           <div class="content-cook">
+                               <p><b>{{$item->name}}</b></p>
+                               <small>by {{$item->user->name}}</small><br>
+                               <small>{{$item->time}} phút</small>
+                               <div class="save">
+                                    <span><i class="far fa-bookmark"></i></span>
+                                    <span>Lưu công thức</span>
+                                </div>
+                           </div>
+                       </div>
+                   </a>
+               </div>
+            @endforeach
+           @endif
+            @endif
             </div>
         </div>
-       
 </div>
-
-
-    @include('pages.add-new-post')
+    @if(Auth::check())
+      @if(Auth::user()->id==$user->id)
+      @include('pages.add-new-post')
+      @endif
+    @endif
 @endsection

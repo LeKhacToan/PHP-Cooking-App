@@ -86,7 +86,7 @@
                             <td><input type="checkbox" class="ls-switch" name="block" @if($us->block==1) checked @endif/></td>
                             <td><input type="checkbox" class="ls-switch" name="block" @if($us->block_comment==1) checked @endif/></td>
                             <td>@if($us->avatar!="") <img src="upload/avatar/{{$us->avatar}}" width="50px"> @else <img src="upload/anhbia.png" width="50px"> @endif</td>
-                            <td>@if($us->avatar!="") <img src="upload/anhbia/{{$us->anh_bia}}" width="50px"> @else <img src="upload/anhbia.png" width="50px"> @endif</td>
+                            <td>@if($us->anh_bia!="") <img src="upload/anhbia/{{$us->anh_bia}}" width="50px"> @else <img src="upload/anhbia.png" width="50px"> @endif</td>
                             <td>{{$us->link_facebook}}</td>
                             <td>{{$us->link_twitter}}</td>
                             <td>{{$us->link_instagram}}</td>

@@ -245,7 +245,7 @@ class BaiVietController extends Controller
     public function xoa(){
 
     }
-    public function getChiTiet(){
+    public function getChiTiet($id){
           return view('pages/baiviet');
     }
 }

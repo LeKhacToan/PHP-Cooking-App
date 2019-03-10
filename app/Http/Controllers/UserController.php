@@ -5,6 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
+use App\PhuongPhap;
+use App\AmThuc;
+use App\LoaiMon;
+use App\DoKho;
+use App\NguyenLieuChinh;
+use App\ThucDon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use App\BaiViet;
+use App\BaiVietTag;
+use App\NguyenLieu;
+use App\BuocThucHien;
+use App\Tag;
 class UserController extends Controller
 {
     public function getDanhSach()
@@ -119,7 +132,9 @@ class UserController extends Controller
             while (file_exists("upload/avatar" . $hinh)) {
                 $hinh = str_random(4) . "_" . $name;
             }
-            unlink("upload/avatar/".$user->avatar);
+            if($user->avatar!=""){
+                unlink("upload/avatar/".$user->avatar);
+            }
             $avatar->move("upload/avatar", $hinh);
             $user->avatar = $hinh;
         }
@@ -134,7 +149,9 @@ class UserController extends Controller
             while (file_exists("upload/anhbia" . $hinh)) {
                 $hinh = str_random(4) . "_" . $name;
             }
-            unlink("upload/anhbia/".$user->anh_bia);
+            if($user->anh_bia!=""){
+               unlink("upload/anhbia/".$user->anh_bia);
+            }
             $avatar->move("upload/anhbia", $hinh);
             $user->anh_bia = $hinh;
         }
@@ -147,7 +164,14 @@ class UserController extends Controller
     public function xoa(){
 
     }
-    public function getChiTiet(){
-        return view('pages/trangcanhan');
+    public function getChiTiet($id){
+        $user=User::find($id);
+        $dokho=DoKho::all();
+        $loaimon=LoaiMon::all();
+        $thucdon=ThucDon::all();
+        $phuongphap=PhuongPhap::all();
+        $nguyenlieuchinh=NguyenLieuChinh::all();
+        $amthuc=AmThuc::all();
+        return view('pages/trangcanhan',['user'=>$user,'dokho'=>$dokho,'loaimon'=>$loaimon,'thucdon'=>$thucdon,'nguyenlieuchinh'=>$nguyenlieuchinh,'phuongphap'=>$phuongphap,'amthuc'=>$amthuc]);
     }
 }

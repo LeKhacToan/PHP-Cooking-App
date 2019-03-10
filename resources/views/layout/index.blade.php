@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="css/home-style.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/home-style.css')}}" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -34,6 +34,7 @@
                     <a class="dropdown-item" href="admin/baiviet/danhsach">Admin space</a>
                     @endif
                   <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="trangcanhan/{{Auth::user()->id}}">Trang cá nhân</a>
                   <a class="dropdown-item" href="logout">Logout</a>
                 </div>
               </li>

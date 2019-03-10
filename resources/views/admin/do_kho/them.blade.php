@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label>Name*</label>
                     <input type="text" class="form-control" name="name"
-                           placeholder="Name">
+                           placeholder="Name" required>
                 </div>
                 <button class="btn btn-primary" id ="submit">Submit</button>
             </form>

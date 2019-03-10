@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label>Name*</label>
                     <input type="text" class="form-control" name="name"
-                placeholder="Name" value="{{$thucdon->name}}">
+                placeholder="Name" value="{{$thucdon->name}}" required>
                 </div>
                 <button class="btn btn-primary" id ="submit">Save</button>
             </form>

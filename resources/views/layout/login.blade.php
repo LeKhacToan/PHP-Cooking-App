@@ -33,7 +33,7 @@
             <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
         <button type="submit" class="btn btn-success">Login</button>
-        <button type="submit" class="btn btn-danger" onclick="document.getElementById('id-login').style.display='none'">Cancel</button>
+        <a  class="btn btn-danger" onclick="document.getElementById('id-login').style.display='none'">Cancel</a>
         <p>Forgot <a href="#">password?</a></p>
         <a href="#"> I do not have an account</a>
     </form>

@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label>Name*</label>
                     <input type="text" class="form-control" name="name"
-                placeholder="Name" value="{{$nguyenlieuchinh->name}}">
+                placeholder="Name" value="{{$nguyenlieuchinh->name}}" required>
                 </div>
                 <button class="btn btn-primary" id ="submit">Save</button>
             </form>

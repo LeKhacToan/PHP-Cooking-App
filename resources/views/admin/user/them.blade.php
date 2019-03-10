@@ -36,12 +36,12 @@
                 <div class="form-group">
                     <label>Email address*</label>
                     <input type="email" class="form-control" name="email"
-                           placeholder="Email">
+                           placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label>Username*</label>
                     <input type="text" class="form-control" name="username"
-                           placeholder="Username">
+                           placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label>Ngày sinh</label>
@@ -74,12 +74,12 @@
                 <div class="form-group">
                     <label>Password*</label>
                     <input type="password" class="form-control" name="password" id="password"
-                           placeholder="Password">
+                           placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <label>Retype Password*</label>
                     <input type="password" name="password_confirmation" class="form-control"
-                           placeholder="Password">
+                           placeholder="Password" required>
                 </div>
 
                 <div class="form-group">
