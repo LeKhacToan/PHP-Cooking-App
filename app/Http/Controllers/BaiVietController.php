@@ -576,15 +576,18 @@ class BaiVietController extends Controller
 
     }
     public function home(){
-        $topDay=BaiViet::orderBy('updated_at', 'desc')->limit(1)->first();
-        $postWeek=BaiViet::orderBy('updated_at', 'desc')->limit(4)->get();
+        $baiviet=BaiViet::where('top_day',1);
+        $topDay=$baiviet->orderBy('updated_at', 'desc')->limit(1)->first();
+        $baiviet=BaiViet::where('top_week',1);
+        $postWeek=$baiviet->orderBy('updated_at', 'desc')->limit(4)->get();
         $newPost=BaiViet::orderBy('created_at','desc')->take(12)->get();
         $random=BaiViet::orderByRaw("RAND()")->get()->take(6);
         return view('pages/home',['postWeek'=>$postWeek,'newPost'=>$newPost,'topDay'=>$topDay,'random'=>$random]);
     }
     public function topweek($id){
         $id=$id-1;
-        $monan=BaiViet::orderBy('updated_at', 'desc')->skip($id*4)->take(4)->get();
+        $baiviet=BaiViet::where('top_week',1);
+        $monan=$baiviet->orderBy('updated_at', 'desc')->skip($id*4)->take(4)->get();
         $data=view("pages/monan",compact('monan'))->render();
          return response()->json(['html'=>$data]);
     }

@@ -27,7 +27,7 @@
                             </li>
                             <div class="thongbao" id="tb_id">
                                 @foreach ($user->thongbao as $tb)
-                                <small><a href="{{$tb->link}}">{{$tb->content}}</a></small>
+                                <small><a href="{{$tb->link}}">{{$tb->content}}</a></small><br>
                                 @endforeach
                             </div>
                            @endif
