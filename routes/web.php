@@ -13,14 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/','BaiVietController@home');
+Route::get('topweek/{id}','BaiVietController@topweek');
+Route::get('newpost/{id}','BaiVietController@newpost');
+Route::get('savepost/{id}','BaiVietController@savepost');
+Route::get('saved/{id}','BaiVietController@saved');
+Route::get('thongtin/{id}','UserController@suaUser');
 Route::post('login','LoginController@login');
 Route::get('logout','LoginController@logout');
-Route::get('baiviet','BaiVietController@getChiTiet');
+Route::post('search','SearchController@postSearch');
+Route::post('search/advance','SearchController@postadSearch');
+Route::post('user/sua/{id}','UserController@sua');
+
+
+Route::get('dangky','UserController@getDangKy');
+Route::post('dangky','UserController@postDangKy');
+Route::post('comment','BaiVietController@postComment');
+Route::post('rate','BaiVietController@postRate');
+Route::get('baiviet/{id}','BaiVietController@getChiTiet');
 Route::get('trangcanhan/{id}','UserController@getChiTiet');
 Route::post('baiviet/them', 'BaiVietController@new');
+Route::get('baiviet/sua/{id}','BaiVietController@baivietsua');
+Route::post('baiviet/sua/{id}','BaiVietController@postbaivietsua');
 
 Route::get('thu',function(){
     if(DB::connection()->getDatabaseName())
@@ -122,3 +136,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
 });
 
+Route::get('mon/moi','BaiVietController@monmoi');
+Route::get('list/new/{list}','BaiVietController@getList');
+Auth::routes();
+
+Route::get('/home', 'BaiVietController@home')->name('home');

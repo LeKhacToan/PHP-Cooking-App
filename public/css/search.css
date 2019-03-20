@@ -1,0 +1,21 @@
+.border{
+   margin-top: 10px;
+   border-radius: 5px;
+   width: 100%;
+   height: auto;
+   background-color: white;
+   padding:4px;
+}
+#id_search{
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+body{
+    background-color: rgb(233, 236, 238);
+}
+h3{
+    display: inline-block;
+}

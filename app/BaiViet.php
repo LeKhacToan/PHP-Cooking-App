@@ -39,4 +39,7 @@ class BaiViet extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag','baiviet_tag','baiviet_id','tag_id');
     }
+    public function binhluans(){
+        return $this->hasMany('App\binhluan','baiviet_id');
+    }
 }

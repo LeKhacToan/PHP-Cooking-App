@@ -1,5 +1,5 @@
 body{
-    background: rgb(233, 236, 238);
+    background-color: rgb(233, 236, 238);
 }
 #dropdown{
     position: absolute;
@@ -8,9 +8,11 @@ body{
 }
 .content-food{
     padding-top: 40px;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
-
+    border: 4px;
+    background: white;
+    padding: 20px;
 }
 .name-auther{
     padding-bottom: 20px;
@@ -27,14 +29,14 @@ body{
 .save-class ul{
     list-style: none;
 }
-#save-btn{
+.save-btn{
     position: absolute;
     top:10px;
     right: 0;
 }
 .decription{
     padding-bottom: 30px;
-    border-bottom: 3px solid rgba(184, 179, 179, 0.883);
+
 }
 .decription-content{
     position: relative;
@@ -48,7 +50,7 @@ body{
 
 }
 .checked {
-    color: orange;
+    color: yellow;
   }
 .decription-image img{
     padding-left: 10px;
@@ -112,7 +114,7 @@ body{
    font-family:  Arial;
    font-size: 80%;
     width: 100%;
-    background-color: rgb(168, 172, 175);
+    background-color:rgb(233, 236, 238);
     border-radius: 3px;
 }
 .nl-bth{
@@ -122,5 +124,8 @@ body{
 .cs{
     font-size: 15px;
     font-weight:bold;
+}
+.tag{
+    margin-left: 15px;
 }
 

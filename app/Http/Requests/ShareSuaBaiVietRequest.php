@@ -31,7 +31,7 @@ class ShareSuaBaiVietRequest extends FormRequest
             'names.*'=>'required',
             'numbers.*'=>'required',
             'motas.*'=>'required',
-            'hinh_steps.*'=>'required|mimes:jpeg,jpg,png,gif'
+            'hinh_steps.*'=>'required'
         ];
     }
     public function messages(){

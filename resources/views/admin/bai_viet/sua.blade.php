@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('scripts')
-    <script src="js/addNewPost.js"></script>
+    <script src="js/suapost.js"></script>
 @endsection
 @section('content')
 <div class="main-content">
@@ -47,7 +47,7 @@
                     <div class="col-sm-10">
                         <input type="file" class="form-control-file" id="" name="hinh">
                     </div>
-                    <img src="upload/image_baiviet/{{$baiviet->link_image}}" width="80%" style="margin-left:200px;">
+                    <img src="upload/image_baiviet/{{$baiviet->link_image}}" width="80%" height="80%" style="margin-left:200px;">
                 </div>
                 <div class="form-group">
                         <label><b>Top day</b></label>

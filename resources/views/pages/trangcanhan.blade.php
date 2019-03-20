@@ -2,6 +2,7 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('css/trangcanhan.css')}}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link href="{{asset('css/search.css')}}" type="text/css" rel="stylesheet">
 @stop
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -54,8 +55,8 @@
         <div class="noidung-cn">
         </div>
         @endif
-        <div class="list">
-            <div class="row justify-content-md-center">
+        <div class="list bao ">
+            <div class="row justify-content-md-center" id="daluu_id">
                 {{-- kiem tra dang nhap --}}
             @if(Auth::check())
                 @if(Auth::user()->id==$user->id)
@@ -63,21 +64,21 @@
                   <p>Không có bài viết</p>
                   @else
                   @foreach ($user->baiviets as $item)
-                 <div class="col-md-3">
+                 <div class="col-md-3 ">
                          <a href="baiviet/{{$item->id}}" style="text-decoration: none;">
                              <div class="noi-dung">
                                  <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
                                  <div class="content-cook">
-                                     <p><b>{{$item->name}}</b></p>
-                                     <small> by {{$item->user->name}}</small><br>
-                                     <small>{{$item->time}} phút</small>
+                                     <h6><b>{{$item->name}}</b></h6>
+                                     <small> By {{$item->user->name}}</small><br>
+                                     <small>{{$item->time}} minutes</small>
                                      <div class="dropdown show">
                                          <a class="dropdown-toggle"  role="button" id="dropdownMenuLink" data-toggle="dropdown"
                                              aria-haspopup="true" aria-expanded="false">
                                          </a>
                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                             <a class="dropdown-item" href="sua/baiviet/{{$item->id}}">Edit</a>
-                                             <a class="dropdown-item" href="xoa/baiviet/{{$item->id}}">Delete</a>
+                                             <a class="dropdown-item" href="baiviet/sua/{{$item->id}}">Edit</a>
+                                             <a class="dropdown-item" href="baiviet/xoa/{{$item->id}}">Delete</a>
                                          </div>
                                      </div>
 
@@ -98,12 +99,11 @@
                             <div class="noi-dung">
                                 <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
                                 <div class="content-cook">
-                                    <p><b>{{$item->name}}</b></p>
-                                    <small> by {{$item->user->name}}</small><br>
-                                    <small>{{$item->time}} phút</small>
-
+                                    <h6><b>{{$item->name}}</b></h6>
+                                    <small> By {{$item->user->name}}</small><br>
+                                    <small>{{$item->time}} minutes</small>
                                     <div class="save">
-                                        <span><i class="far fa-bookmark"></i></span>
+                                        <span><i class="far fa-bookmark savePost" id="{{$item->id}}"></i></span>
                                     </div>
                                     <br>
                                 </div>
@@ -123,11 +123,11 @@
                        <div class="noi-dung">
                            <img src="upload/image_baiviet/{{$item->link_image}}" alt="">
                            <div class="content-cook">
-                               <p><b>{{$item->name}}</b></p>
-                               <small>by {{$item->user->name}}</small><br>
-                               <small>{{$item->time}} phút</small>
+                            <h6><b>{{$item->name}}</b></h6>
+                               <small>By {{$item->user->name}}</small><br>
+                               <small>{{$item->time}} minutes</small>
                                <div class="save">
-                                    <span><i class="far fa-bookmark"></i></span>
+                                    <span><i class="far fa-bookmark savePost"  id="{{$item->id}}"></i></span>
                                 </div>
                                 <br>
                            </div>
