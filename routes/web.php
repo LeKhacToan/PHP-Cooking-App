@@ -17,7 +17,7 @@ Route::get('/heroku', function () {
 });
 
 
-Route::get('/','BaiVietController@home');
+Route::get('','BaiVietController@home');
 Route::get('topweek/{id}','BaiVietController@topweek');
 Route::get('newpost/{id}','BaiVietController@newpost');
 Route::get('savepost/{id}','BaiVietController@savepost');
