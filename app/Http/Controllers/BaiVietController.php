@@ -577,7 +577,7 @@ class BaiVietController extends Controller
     }
     public function home(){
         $baiviet=BaiViet::where('top_day',1);
-        $topDay=$baiviet->orderBy('updated_at', 'desc')->limit(1)->first();
+        $topDay=$baiviet->orderBy('updated_at','desc')->limit(1)->first();
         $baiviet=BaiViet::where('top_week',1);
         $postWeek=$baiviet->orderBy('updated_at', 'desc')->limit(4)->get();
         $newPost=BaiViet::orderBy('created_at','desc')->take(12)->get();

@@ -47,7 +47,7 @@ Route::get('thu',function(){
 }
 });
 //,'middleware'=>'adminLogin'
-Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('danhsach', 'UserController@getDanhSach');
 
