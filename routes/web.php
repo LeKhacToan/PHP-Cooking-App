@@ -16,8 +16,7 @@ Route::get('/heroku', function () {
     return view('welcome');
 });
 
-
-Route::get('','BaiVietController@home');
+Route::get('home','BaiVietController@home');
 Route::get('topweek/{id}','BaiVietController@topweek');
 Route::get('newpost/{id}','BaiVietController@newpost');
 Route::get('savepost/{id}','BaiVietController@savepost');
@@ -142,6 +141,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('mon/moi','BaiVietController@monmoi');
 Route::get('list/new/{list}','BaiVietController@getList');
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'BaiVietController@home')->name('home');
+// Route::get('/home', 'BaiVietController@home')->name('home');
