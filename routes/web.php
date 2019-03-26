@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/heroku', function () {
     return view('welcome');
 });
+Route::get('/', function () {
+    echo "grrfrfrfrfrfrf";
+});
 
-Route::get('/','BaiVietController@home');
+
+//Route::get('/','BaiVietController@home');
 Route::get('topweek/{id}','BaiVietController@topweek');
 Route::get('newpost/{id}','BaiVietController@newpost');
 Route::get('savepost/{id}','BaiVietController@savepost');
