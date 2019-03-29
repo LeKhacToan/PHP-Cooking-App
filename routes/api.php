@@ -16,4 +16,22 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('top_week', function ($id) {
+
+});
+Route::get('list_new', function ($id) {
+
+});
+Route::get('users/{id}', function ($id) {
+
+});
+Route::post('login/{email}/{password}', function ($id) {
+
+});
+Route::post('dangky/{email}/{name}/{password}', function ($id) {
+
+});
+Route::get('users/{id}', function ($id) {
+
+});
 
