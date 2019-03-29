@@ -581,7 +581,7 @@ class BaiVietController extends Controller
         $baiviet=BaiViet::where('top_week',1);
         $postWeek=$baiviet->orderBy('updated_at', 'desc')->limit(4)->get();
         $newPost=BaiViet::orderBy('created_at','desc')->take(12)->get();
-        $random=BaiViet::orderByRaw("RAND()")->get()->take(6);
+        $random=BaiViet::inRandomOrder()->take(6)->get();
         return view('pages/home',['postWeek'=>$postWeek,'newPost'=>$newPost,'topDay'=>$topDay,'random'=>$random]);
     }
     public function topweek($id){
