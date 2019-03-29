@@ -558,17 +558,31 @@ class BaiVietController extends Controller
     }
     public function xoa($id)
     {
+        // if(BaiViet::where('id',$id)->exists()){
+        //     $baiviet=BaiViet::find($id);
+        //     if(Auth::user()->role==1||Auth::user()->id==$baiviet->user_id){
+        //         $baiviet->tags()->detach();
+        //         $binhluan=binhluan::where('baiviet_id',$id);
+        //         $binhluan->delete();
+        //         $nl=NguyenLieu::where('baiviet_id',$id);
+        //         $nl->delete();
+        //         $bth=BuocThucHien::where('baiviet_id',$id);
+        //         $bth->delete();
+        //         $rate=Rate::where('baiviet_id',$id);
+        //         $rate->delete();
+
+        //     }
+        // }
 
     }
     public function home(){
-        // $baiviet=BaiViet::where('top_day',1);
-        // $topDay=$baiviet->orderBy('updated_at','desc')->limit(1)->first();
-        // $baiviet=BaiViet::where('top_week',1);
-        // $postWeek=$baiviet->orderBy('updated_at', 'desc')->limit(4)->get();
-        // $newPost=BaiViet::orderBy('created_at','desc')->take(12)->get();
-        // $random=BaiViet::orderByRaw("RAND()")->get()->take(6);
-        // return view('pages/home',['postWeek'=>$postWeek,'newPost'=>$newPost,'topDay'=>$topDay,'random'=>$random]);
-        return view('welcome');
+        $baiviet=BaiViet::where('top_day',1);
+        $topDay=$baiviet->orderBy('updated_at','desc')->limit(1)->first();
+        $baiviet=BaiViet::where('top_week',1);
+        $postWeek=$baiviet->orderBy('updated_at', 'desc')->limit(4)->get();
+        $newPost=BaiViet::orderBy('created_at','desc')->take(12)->get();
+        $random=BaiViet::orderByRaw("RAND()")->get()->take(6);
+        return view('pages/home',['postWeek'=>$postWeek,'newPost'=>$newPost,'topDay'=>$topDay,'random'=>$random]);
     }
     public function topweek($id){
         $id=$id-1;
