@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/','BaiVietController@home');
+Route::get('/','BaiVietController@home');
 Route::get('topweek/{id}','BaiVietController@topweek');
 Route::get('newpost/{id}','BaiVietController@newpost');
 Route::get('savepost/{id}','BaiVietController@savepost');
@@ -126,9 +126,9 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
 Route::get('mon/moi','BaiVietController@monmoi');
 Route::get('list/new/{list}','BaiVietController@getList');
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // Auth::routes();
 
 
