@@ -246,9 +246,6 @@ class UserController extends Controller
                 while (file_exists("upload/anhbia" . $hinh)) {
                     $hinh = str_random(4) . "_" . $name;
                 }
-                if($user->anh_bia!=""){
-                   unlink("upload/anhbia/".$user->anh_bia);
-                }
                 $avatar->move("upload/anhbia", $hinh);
                 $user->anh_bia = $hinh;
             }
@@ -256,7 +253,6 @@ class UserController extends Controller
             $user->link_instagram = $request->link_instagram;
             $user->link_twitter = $request->link_twitter;
             $user->save();
-
             return redirect('trangcanhan/'.$id)->with('thongbao','Sửa thành công');
         }
         else{
