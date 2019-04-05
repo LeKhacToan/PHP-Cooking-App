@@ -214,6 +214,7 @@ class UserController extends Controller
         ]);
         if(User::where('id',$id)->exists()){
             $user= User::find($id);
+            $user->name = $request->username;
             $user->sex = $request->gioi_tinh;
             if ($request->ngay_sinh != "") {
                 $user->ngay_sinh = date("Y/m/d", strtotime($request->ngay_sinh));
@@ -230,9 +231,6 @@ class UserController extends Controller
                 $hinh = str_random(4) . "_" . $name;
                 while (file_exists("upload/avatar" . $hinh)) {
                     $hinh = str_random(4) . "_" . $name;
-                }
-                if($user->avatar!=""){
-                    unlink("upload/avatar/".$user->avatar);
                 }
                 $avatar->move("upload/avatar", $hinh);
                 $user->avatar = $hinh;
