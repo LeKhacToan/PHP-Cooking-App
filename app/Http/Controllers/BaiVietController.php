@@ -256,8 +256,8 @@ class BaiVietController extends Controller
             $rate=Rate::where('baiviet_id',$id);
             $countRate=$rate->count();
             $sumRate=$rate->avg('point');
-            $random=BaiViet::orderByRaw("RAND()")->get()->take(4);
-            $random1=BaiViet::orderByRaw("RAND()")->get()->take(4);
+            $random= BaiViet::inRandomOrder()->take(4)->get();
+            $random1=BaiViet::inRandomOrder()->take(4)->get();
             return view('pages/baiviet',['baiviet'=>$baiviet,'rate'=>$countRate,'sum'=>$sumRate,'random'=>$random,'random1'=>$random1]);
          }
          else{
