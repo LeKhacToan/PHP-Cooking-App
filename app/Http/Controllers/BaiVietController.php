@@ -165,8 +165,14 @@ class BaiVietController extends Controller
         if (isset($request->top_day)) {
             $baiviet->top_day = true;
         }
+        else{
+            $baiviet->top_day = false;
+        }
         if (isset($request->top_week)) {
             $baiviet->top_week = true;
+        }
+        else{
+            $baiviet->top_week = false;
         }
         if ($request->hasFile('hinh')) {
             $file = $request->file('hinh');
