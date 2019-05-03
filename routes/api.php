@@ -16,22 +16,45 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('top_week', function ($id) {
+
+
+Route::get('top_week/{id}', function ($id) {
+
+    $baiviet=BaiViet::where('top_week',1);
+    $monan=$baiviet->orderBy('created_at', 'desc')->skip($id*8)->take(8)->get();
+    $post=array();
+    foreach($monan as $mn){
+        $image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$mn->link_image;
+        $data=array("id"=>$mn->id,"title"=>$mn->name,"url_image"=>$image,"time"=>$mn->time." phút","auth"=>$mn->user->name);
+        array_push($post,$data);
+    }
+    $json_data=array
+    (
+        'success'=>true,
+        'datas'=>$post,
+    );
+    return json_encode($json_data,JSON_UNESCAPED_UNICODE);
 
 });
-Route::get('list_new', function ($id) {
+
+Route::get('dish/{id}',function($id){
+
+     $baiviet=BaiViet::orderBy('created_at', 'desc')->skip($id*8)->take(8)->get();
+     $post=array();
+     foreach($baiviet as $bv){
+         $image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$bv->link_image;
+         $data=array("id"=>$bv->id,"title"=>$bv->name,"url_image"=>$image,"time"=>$bv->time." phút","auth"=>$bv->user->name);
+         array_push($post,$data);
+     }
+     $json_data=array
+     (
+         'success'=>true,
+         'datas'=>$post,
+     );
+     return json_encode($json_data,JSON_UNESCAPED_UNICODE);
 
 });
-Route::get('users/{id}', function ($id) {
 
-});
-Route::post('login/{email}/{password}', function ($id) {
 
-});
-Route::post('dangky/{email}/{name}/{password}', function ($id) {
 
-});
-Route::get('users/{id}', function ($id) {
-
-});
 
