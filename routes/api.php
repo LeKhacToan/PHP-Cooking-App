@@ -29,12 +29,8 @@ Route::get('top_week/{id}', function ($id) {
         $data=array("id"=>$mn->id,"title"=>$mn->name,"url_image"=>$image,"time"=>$mn->time." phút","auth"=>$mn->user->name);
         array_push($post,$data);
     }
-    $json_data=array
-    (
-        'success'=>true,
-        'datas'=>$post,
-    );
-    return json_encode($json_data,JSON_UNESCAPED_UNICODE);
+
+    return json_encode($post,JSON_UNESCAPED_UNICODE);
 
 });
 
@@ -47,12 +43,8 @@ Route::get('dish/{id}',function($id){
          $data=array("id"=>$bv->id,"title"=>$bv->name,"url_image"=>$image,"time"=>$bv->time." phút","auth"=>$bv->user->name);
          array_push($post,$data);
      }
-     $json_data=array
-     (
-         'success'=>true,
-         'datas'=>$post,
-     );
-     return json_encode($json_data,JSON_UNESCAPED_UNICODE);
+
+     return json_encode($post,JSON_UNESCAPED_UNICODE);
 
 });
 
