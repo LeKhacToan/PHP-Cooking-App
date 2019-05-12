@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\BaiViet;
+use function GuzzleHttp\json_encode;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,22 @@ Route::get('dish/{id}',function($id){
 
      return json_encode($post,JSON_UNESCAPED_UNICODE);
 
+});
+Route::get('post/{id}',function($id){
+    $post=BaiViet::find($id);
+    $url_image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$post->link_image;
+    $nguyenlieu = "";
+    foreach($post->nguyenlieus as $nl){
+      $nguyenlieu=$nl."\n";
+    }
+    $step="";
+    foreach($post->buocthuchiens as $bth){
+        $step=$bth."\n";
+    }
+    $data=array("title"=>$post->name,"url_image"=>$url_image,"auth"=>$post->user->name,"time"=>$post->time,"serving"=>$post->serving,
+    "description"=>$post->describe,"nguyenlieu"=>$nguyenlieu,"step"=>$step);
+
+    return json_encode($data,JSON_UNESCAPED_UNICODE);
 });
 
 
