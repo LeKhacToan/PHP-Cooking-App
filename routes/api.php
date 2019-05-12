@@ -53,11 +53,11 @@ Route::get('post/{id}',function($id){
     $url_image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$post->link_image;
     $nguyenlieu = "";
     foreach($post->nguyenlieus as $nl){
-      $nguyenlieu=$nl."\n";
+      $nguyenlieu=$nl->soluong." ".$nl->name."\n";
     }
     $step="";
     foreach($post->buocthuchiens as $bth){
-        $step=$bth."\n";
+        $step=$bth->describe."\n";
     }
     $data=array("title"=>$post->name,"url_image"=>$url_image,"auth"=>$post->user->name,"time"=>$post->time,"serving"=>$post->serving,
     "description"=>$post->describe,"nguyenlieu"=>$nguyenlieu,"step"=>$step);
