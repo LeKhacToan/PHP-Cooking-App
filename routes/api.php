@@ -66,7 +66,7 @@ Route::get('post/{id}',function($id){
 });
 Route::post('post',function(Request $request){
     $name=$request->name;
-    $monan=BaiViet::where('name','like','%'.$name.'%')->get();
+    $monan=BaiViet::all();
     $post=array();
      foreach($monan as $bv){
          $image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$bv->link_image;
