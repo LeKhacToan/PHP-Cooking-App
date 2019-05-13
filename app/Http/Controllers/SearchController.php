@@ -19,7 +19,7 @@ class SearchController extends Controller
         $monan=BaiViet::all();
         if($name!=""){
             //tim mon an
-            $monan=BaiViet::where('name','like','%'.$name.'%')->get();
+            $monan=BaiViet::where('name','like',"%{$name}%")->get();
         }
         $dokho = DoKho::all();
         $loaimon = LoaiMon::all();
