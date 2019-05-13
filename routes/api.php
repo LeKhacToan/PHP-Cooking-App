@@ -57,12 +57,21 @@ Route::get('post/{id}',function($id){
     }
     $step="";
     foreach($post->buocthuchiens as $bth){
-        $step=$step.$bth->describe."\n";
+        $step=$step.$bth->describe."\n\n\n";
     }
-    $data=array("title"=>$post->name,"url_image"=>$url_image,"auth"=>$post->user->name,"time"=>$post->time,"serving"=>$post->serving." người",
+    $data=array("title"=>$post->name,"url_image"=>$url_image,"auth"=>$post->user->name,"time"=>$post->time." phút","serving"=>$post->serving." người",
     "description"=>$post->describe,"nguyenlieu"=>$nguyenlieu,"step"=>$step);
 
     return json_encode($data,JSON_UNESCAPED_UNICODE);
+});
+Route::get('post/{name}',function($name){
+    $monan=BaiViet::where('name','like','%'.$name.'%')->get();
+    if($monan==null){
+        echo "rong";
+    }
+    else{
+        echo "khac rong";
+    }
 });
 
 
