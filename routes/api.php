@@ -64,14 +64,16 @@ Route::get('post/{id}',function($id){
 
     return json_encode($data,JSON_UNESCAPED_UNICODE);
 });
-Route::get('post/{name}',function($name){
+Route::post('post',function(Request $request){
+    $name=$request->name;
     $monan=BaiViet::where('name','like','%'.$name.'%')->get();
-    if($monan==null){
-        echo "rong";
-    }
-    else{
-        echo "khac rong";
-    }
+    $post=array();
+     foreach($monan as $bv){
+         $image="https://cookingbamboo.herokuapp.com/upload/image_baiviet/".$bv->link_image;
+         $data=array("id"=>$bv->id,"title"=>$bv->name,"url_image"=>$image,"time"=>$bv->time." phút","auth"=>$bv->user->name);
+         array_push($post,$data);
+     }
+     return json_encode($post,JSON_UNESCAPED_UNICODE);
 });
 
 
