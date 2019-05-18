@@ -130,7 +130,7 @@ Route::post('authen',function(Request $request){
     if(Auth::attempt($login)){
         $user = Auth::user();
         $data = array("name" => $user->name);
-        $json_data['datas']=$data;
+        $json_data['user']=$data;
     }
     else{
         $json_data['success']="false";
