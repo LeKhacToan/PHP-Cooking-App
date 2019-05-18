@@ -64,6 +64,79 @@ Route::get('post/{id}', function ($id) {
 
     return json_encode($data, JSON_UNESCAPED_UNICODE);
 });
+
+Route::post('PostOfYou',function(Request $request){
+    $json_data = array(
+        'success' => "true",
+        'data' => "",
+    );
+    $login=[
+        'email'=>$request->email,
+        'password'=>$request->password,
+    ];
+    if(Auth::attempt($login)){
+        $user = Auth::user();
+        $post = array();
+        foreach($user->baiviets as $bv){
+            $image = "https://cookingbamboo.herokuapp.com/upload/image_baiviet/" . $bv->link_image;
+            $data = array("id" => $bv->id, "title" => $bv->name, "url_image" => $image, "time" => $bv->time . " phút", "auth" => $bv->user->name);
+            array_push($post, $data);
+        }
+        $json_data['datas']=$post;
+    }
+    else{
+        $json_data['success']="false";
+    }
+    return json_encode($json_data, JSON_UNESCAPED_UNICODE);
+
+});
+
+Route::post('SaveOfYou',function(Request $request){
+    $json_data = array(
+        'success' => "true",
+        'data' => "",
+    );
+    $login=[
+        'email'=>$request->email,
+        'password'=>$request->password,
+    ];
+    if(Auth::attempt($login)){
+        $user = Auth::user();
+        $post = array();
+        foreach($user->baiviets as $bv){
+            $image = "https://cookingbamboo.herokuapp.com/upload/image_baiviet/" . $bv->link_image;
+            $data = array("id" => $bv->id, "title" => $bv->name, "url_image" => $image, "time" => $bv->time . " phút", "auth" => $bv->user->name);
+            array_push($post, $data);
+        }
+        $json_data['datas']=$post;
+    }
+    else{
+        $json_data['success']="false";
+    }
+    return json_encode($json_data, JSON_UNESCAPED_UNICODE);
+
+});
+
+Route::post('authen',function(Request $request){
+
+    $login=[
+        'email'=>$request->email,
+        'password'=>$request->password,
+    ];
+    $json_data = array(
+        'success' => "true",
+        'user' => "",
+    );
+    if(Auth::attempt($login)){
+        $user = Auth::user();
+        $data = array("name" => $user->name);
+        $json_data['datas']=$data;
+    }
+    else{
+        $json_data['success']="false";
+    }
+    return json_encode($json_data, JSON_UNESCAPED_UNICODE);
+});
 Route::post('post', function (Request $request) {
     $name = $request->name;
     $monan = BaiViet::where('name', 'like', '%' . $name . '%')->get();
