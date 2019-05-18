@@ -68,7 +68,7 @@ Route::get('post/{id}', function ($id) {
 Route::post('PostOfYou',function(Request $request){
     $json_data = array(
         'success' => "true",
-        'data' => "",
+       
     );
     $login=[
         'email'=>$request->email,
@@ -94,7 +94,7 @@ Route::post('PostOfYou',function(Request $request){
 Route::post('SaveOfYou',function(Request $request){
     $json_data = array(
         'success' => "true",
-        'data' => "",
+
     );
     $login=[
         'email'=>$request->email,
