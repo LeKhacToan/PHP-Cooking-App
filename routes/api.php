@@ -68,7 +68,7 @@ Route::get('post/{id}', function ($id) {
 Route::post('PostOfYou',function(Request $request){
     $json_data = array(
         'success' => "true",
-       
+
     );
     $login=[
         'email'=>$request->email,
@@ -103,7 +103,7 @@ Route::post('SaveOfYou',function(Request $request){
     if(Auth::attempt($login)){
         $user = Auth::user();
         $post = array();
-        foreach($user->baiviets as $bv){
+        foreach($user->baivietluu as $bv){
             $image = "https://cookingbamboo.herokuapp.com/upload/image_baiviet/" . $bv->link_image;
             $data = array("id" => $bv->id, "title" => $bv->name, "url_image" => $image, "time" => $bv->time . " phút", "auth" => $bv->user->name);
             array_push($post, $data);
