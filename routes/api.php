@@ -117,6 +117,7 @@ Route::post('SaveOfYou',function(Request $request){
 
 });
 
+
 Route::post('authen',function(Request $request){
 
     $login=[
@@ -129,7 +130,7 @@ Route::post('authen',function(Request $request){
     );
     if(Auth::attempt($login)){
         $user = Auth::user();
-        $data = array("name" => $user->name);
+        $data = array("name" => $user->name,"url_image"=>"https://cookingbamboo.herokuapp.com/upload/anhbia/" .$user->anh_bia,"avatar"=>"https://cookingbamboo.herokuapp.com/upload/avatar/" .$user->avatar);
         $json_data['user']=$data;
     }
     else{
