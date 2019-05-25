@@ -149,7 +149,6 @@ Route::post('save',function(Request $request){
     $id = $request->id;
     $json_data = array(
         'success' => "false",
-        'datas' => "",
     );
     $data="";
     if(Auth::attempt($login)){
