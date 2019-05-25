@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\BaiViet;
+use App\LuuBaiViet;
 use function GuzzleHttp\json_encode;
 
 /*
@@ -55,7 +56,7 @@ Route::get('post/{id}', function ($id) {
     }
     $step = "";
     foreach ($post->buocthuchiens as $bth) {
-        $step = $step . $bth->describe . "\n\n\n";
+        $step = $step . $bth->describe . "\n\n";
     }
     $data = array(
         "title" => $post->name, "url_image" => $url_image, "auth" => $post->user->name, "time" => $post->time . " phút", "serving" => $post->serving . " người",
@@ -136,6 +137,49 @@ Route::post('authen',function(Request $request){
     else{
         $json_data['success']="false";
     }
+    return json_encode($json_data, JSON_UNESCAPED_UNICODE);
+});
+
+//luu bai viet
+Route::post('save',function(Request $request){
+    $login=[
+        'email'=>$request->email,
+        'password'=>$request->password,
+    ];
+    $id = $request->id;
+    $json_data = array(
+        'success' => "false",
+        'datas' => "",
+    );
+    $data="";
+    if(Auth::attempt($login)){
+
+        $baiviet=BaiViet::find($id);
+        $user_id=Auth::user()->id;
+
+        if($baiviet->user_id!=$user_id){
+            //kiem tra đa luu bai viet roi;
+             if(LuuBaiViet::where(['user_id'=>$user_id,'baiviet_id'=>$id])->exists()){
+                  $data="Bạn đã lưu bài viết này";
+             }
+             else{
+              $luubaiviet=new LuuBaiViet();
+              $luubaiviet->baiviet_id=$id;
+              $luubaiviet->user_id= $user_id;
+              $luubaiviet->save();
+              $data="Lưu thành công";
+              $json_data['success']="true";
+             }
+      }
+      else{
+          $data="Bạn là chủ bài viết";
+      }
+
+    }
+    else{
+        $data="Bạn chưa đăng nhập";
+    }
+    $json_data['data']=$data;
     return json_encode($json_data, JSON_UNESCAPED_UNICODE);
 });
 Route::post('post', function (Request $request) {
